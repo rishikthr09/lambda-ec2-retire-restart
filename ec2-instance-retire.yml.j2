@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  kubeworkerretirerole:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python2.7
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 60
+      Role: 'arn:aws:iam::{{ AWS_ACCOUNT }}:role/AutomationLambdaCWRole'
+      Events:
+        CloudWatchEvent1:
+          Type: CloudWatchEvent
+          Properties:
+            Pattern:
+              detail-type:
+                - AWS Health Event
+              source:
+                - aws.health
+              detail:
+                service:
+                  - EC2
+                eventTypeCategory:
+                  - scheduledChange
+                eventTypeCode:
+                  - AWS_EC2_INSTANCE_RETIREMENT_SCHEDULED
+
