@@ -7,5 +7,5 @@ Can be used for non-persistent replicated ec2 instances (k8s worker)
 - use event trigger yml for lambda
 
 <sub><sup>
-Isn't this very specific for this use-case? Yes it is. But AWS documentation sucks for this relatively-critical scenario in production -_-
+Isn't this very specific for this use-case? Yes it is. But AWS documentation sucks for handling this relatively-critical scenario in production -_-
 </sup></sub>
